@@ -11,7 +11,7 @@ my @contentarray = (<FH>);
 close (FH);
 
 while (my $str = pop @contentarray) {
-	$str =~ s/(\s|\n)*$//;
+	$str =~ s/^\s+|(\s|\n)+$//g;
 	if ($str =~ m/^#/) {
 		next if($outarray[0] =~ m/^#/);
 	} elsif (exists $outhash{$str}) {
